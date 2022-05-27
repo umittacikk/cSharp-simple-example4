@@ -1,0 +1,53 @@
+/* Bir değerlendirme ekibinin restorantların müşteri sayısı ve kazancına göre yaptığı değerlendirme uygulaması */
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int i, sayi, musteri, kazanc;
+            Console.WriteLine("Kac adet restorant gireceksiniz?");
+            sayi = Convert.ToInt32(Console.ReadLine());
+            for (i = 1; i <= sayi; i++)
+            {
+                Console.WriteLine("Gunluk ortalama musteri sayisi :");
+                musteri = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Gunluk ortalama kazanc:");
+                kazanc = Convert.ToInt32(Console.ReadLine());
+
+                Console.WriteLine("Degerlendirme puaniniz = {0} ", puan(musteri, kazanc));
+                Console.WriteLine("Sizin icin fikrimiz : {0} \n C: Daha cok musteri cekmeniz gerek \n B: Musteri sayiniz iyi fakat memnuniyet artmali \n A: Cizginizi bozmayin", fikir(puan(musteri, kazanc)));
+            }
+            Console.ReadKey();
+        }
+        public static int puan(int musteri, int kazanc)
+        {
+            int kazanilan = musteri * 10 + kazanc / 3 ;
+            return kazanilan;
+        }
+        public static char fikir(int puan)
+        {
+            char harf = 'b';
+            if (puan < 500)
+            {
+                harf = 'C';
+            }
+            else if (puan > 500 && puan < 1500)
+            {
+                harf = 'B';
+            }
+            else if (puan > 1500)
+            {
+                harf = 'A';
+            }
+            return harf;
+        }
+    }
+}
